@@ -12,7 +12,7 @@ export default async function createProfilePage() {
     const formData = {
       name: formValues.get("name"),
       username: formValues.get("username"),
-      bio: formValues.get("bio"),
+      bio: formValues.get("user_bio"),
       profile_picture_url: formValues.get("profile_picture_url"),
       clerk_user_id: userId,
     };
@@ -21,14 +21,13 @@ export default async function createProfilePage() {
     try {
       await db.query(
         `INSERT INTO users (clerk_id, name, username, user_bio, user_email, profile_picture_url,)
-
-          VALUES ($1, $2, $3, $4, $5, $6)`,
+          VALUES ($1, $2, $3, $4, $5,)`,
         [
+          formData.clerk_id,
           formData.name,
           formData.username,
-          formData.bio,
+          formData.user_bio,
           formData.profile_picture_url,
-          formData.clerk_id,
         ]
       );
 
@@ -57,7 +56,7 @@ export default async function createProfilePage() {
             </div>
 
             <div className="form-spacing">
-              <label htmlFor="bio">Bio:</label>
+              <label htmlFor="user_bio">Bio:</label>
               <textarea name="bio" id="bio" required />
             </div>
 
