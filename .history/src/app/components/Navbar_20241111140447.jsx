@@ -32,15 +32,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div>
-            <SignInButton>
-              <UserButton />
-            </SignInButton>
-            <SignedOut>
-              <SignInButton mode="modal">Sign In</SignInButton>
-              <SignUpButton>Sign Up</SignUpButton>
-            </SignedOut>
-          </div>
           <div className="flex items-center gap-4">
             <Link
               href="/compendium"

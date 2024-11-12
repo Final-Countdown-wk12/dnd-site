@@ -11,11 +11,11 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider
-      appearance={{
+    <ClerkProvider>
+      appearance=
+      {{
         baseTheme: dark,
       }}
-    >
       <html lang="en">
         <body>
           <Navbar />
