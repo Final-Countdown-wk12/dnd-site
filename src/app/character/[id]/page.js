@@ -1,5 +1,6 @@
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function CharacterSheet({ params }) {
   const router = useRouter();
@@ -17,10 +18,10 @@ export default function CharacterSheet({ params }) {
 
   async function deleteCharacter() {
     try {
-      await fetch(`/api/characters/${id}`, { method: 'DELETE' });
-      router.push('/characters');
+      await fetch(`/api/characters/${id}`, { method: "DELETE" });
+      router.push("/characters");
     } catch (error) {
-      console.error('Failed to delete character:', error);
+      console.error("Failed to delete character:", error);
     }
   }
 
@@ -40,13 +41,27 @@ export default function CharacterSheet({ params }) {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <h2 className="text-xl font-semibold">Player Info</h2>
-              <p><span className="font-bold">Player Name:</span> {character.player_name}</p>
-              <p><span className="font-bold">Class:</span> {character.character_info.class}</p>
-              <p><span className="font-bold">Race:</span> {character.character_info.race}</p>
-              <p><span className="font-bold">Background:</span> {character.character_info.background}</p>
-              <p><span className="font-bold">Alignment:</span> {character.character_info.alignment}</p>
-              <p><span className="font-bold">Level:</span> {character.character_info.level}</p>
-              <p><span className="font-bold">XP:</span> {character.character_info.xp}</p>
+              <p>
+                <span className="font-bold">Player Name:</span> {character.player_name}
+              </p>
+              <p>
+                <span className="font-bold">Class:</span> {character.character_info.class}
+              </p>
+              <p>
+                <span className="font-bold">Race:</span> {character.character_info.race}
+              </p>
+              <p>
+                <span className="font-bold">Background:</span> {character.character_info.background}
+              </p>
+              <p>
+                <span className="font-bold">Alignment:</span> {character.character_info.alignment}
+              </p>
+              <p>
+                <span className="font-bold">Level:</span> {character.character_info.level}
+              </p>
+              <p>
+                <span className="font-bold">XP:</span> {character.character_info.xp}
+              </p>
             </div>
 
             <div>
