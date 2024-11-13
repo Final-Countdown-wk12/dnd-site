@@ -1,7 +1,6 @@
 // app/page.js
-import Link from "next/link";
-import Image from "next/image";
-import CreateCharacterForm from "./components/CreateCharacterForm";
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
           height={100}
           className="rounded-lg shadow-lg"
         />
-        <CreateCharacterForm />
       </div>
       <main className="max-w-7xl mx-auto px-4 py-16">
         <div className="flex flex-col lg:flex-row items-start lg:items-start">
@@ -25,35 +23,25 @@ export default function Home() {
             <p className="text-xl text-[#5A352A] mb-8">
               Your ultimate companion for D&D 5e adventures
             </p>
-
+            
             <div className="grid grid-cols-1 gap-8">
               <Link href="/character-sheet">
                 <div className="p-6 rounded-lg shadow-lg bg-[#5A352A] hover:bg-[#7A4A3B] text-[#F4ECE4] transition cursor-pointer">
-                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">
-                    Create Character
-                  </h3>
-                  <p className="text-sm">
-                    Build and manage your D&D character sheets
-                  </p>
+                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">Create Character</h3>
+                  <p className="text-sm">Build and manage your D&D character sheets</p>
                 </div>
               </Link>
 
               <Link href="/profile">
                 <div className="p-6 rounded-lg shadow-lg bg-[#5A352A] hover:bg-[#7A4A3B] text-[#F4ECE4] transition cursor-pointer">
-                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">
-                    My Profile
-                  </h3>
-                  <p className="text-sm">
-                    View and edit your adventurer profile
-                  </p>
+                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">My Profile</h3>
+                  <p className="text-sm">View and edit your adventurer profile</p>
                 </div>
               </Link>
 
               <Link href="/campaigns">
                 <div className="p-6 rounded-lg shadow-lg bg-[#5A352A] hover:bg-[#7A4A3B] text-[#F4ECE4] transition cursor-pointer">
-                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">
-                    Join Campaign
-                  </h3>
+                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">Join Campaign</h3>
                   <p className="text-sm">Find and join ongoing campaigns</p>
                 </div>
               </Link>
