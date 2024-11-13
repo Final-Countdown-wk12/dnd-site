@@ -8,10 +8,9 @@ import Link from "next/link";
 export default async function ProfilePage({ searchParams }) {
   const { userId } = await auth();
 
-  const userResult = await db.query(
-    `SELECT * FROM users WHERE clerk_id = $1`,
-    [userId]
-  );
+  const userResult = await db.query(`SELECT * FROM users WHERE clerk_id = $1`, [
+    userId,
+  ]);
 
   const user = userResult.rows?.[0] || null;
   const isEditing = searchParams?.edit === "true";
@@ -26,7 +25,6 @@ export default async function ProfilePage({ searchParams }) {
 
     return (
       <div className="max-w-4xl mx-auto p-8 bg-gradient-to-b from-yellow-500 via-yellow-700 to-yellow-800 shadow-xl rounded-lg border border-yellow-900">
-        
         {/* Welcome Message */}
         <div className="card bg-base-100 p-4 shadow-lg mb-6">
           <h1 className="text-center text-3xl font-bold text-yellow-900 text-shadow:_0_3px_0_rgb(0_0_0_/_40%)">
@@ -57,9 +55,7 @@ export default async function ProfilePage({ searchParams }) {
 
           {/* Bio Section */}
           <div className="card bg-base-100 p-4 shadow-lg col-span-2">
-            <h2 className="text-xl font-semibold text-yellow-500 mb-2">
-              Bio
-            </h2>
+            <h2 className="text-xl font-semibold text-yellow-500 mb-2">Bio</h2>
             <p className="text-white">
               {user.user_bio || "This user has not added a bio yet."}
             </p>
@@ -79,7 +75,9 @@ export default async function ProfilePage({ searchParams }) {
         <div className="mt-6 flex justify-center">
           {isEditing ? (
             <Link href="?edit=false">
-              <button className="btn btn-outline btn-error btn-wide">Cancel</button>
+              <button className="btn btn-outline btn-error btn-wide">
+                Cancel
+              </button>
             </Link>
           ) : (
             <Link href="?edit=true">
@@ -102,15 +100,22 @@ export default async function ProfilePage({ searchParams }) {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             {characters.map((character) => (
-              <div key={character.id} className="card bg-base-200 shadow-lg border border-yellow-500">
+              <div
+                key={character.id}
+                className="card bg-base-200 shadow-lg border border-yellow-500"
+              >
                 <div className="card-body">
-                  <h3 className="card-title text-xl text-yellow-300">{character.player_name}</h3>
+                  <h3 className="card-title text-xl text-yellow-300">
+                    {character.player_name}
+                  </h3>
                   <p className="text-gray-300">AC: {character.ac}</p>
                   <p className="text-gray-300">
                     Proficiency Bonus: {character.profiecency_bonus}
                   </p>
                   <Link href={`/characters/${character.id}`}>
-                    <button className="btn btn-primary w-full mt-4">View Details</button>
+                    <button className="btn btn-primary w-full mt-4">
+                      View Details
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -120,7 +125,9 @@ export default async function ProfilePage({ searchParams }) {
 
         <div className="text-center mt-8">
           <Link href="/characters/new">
-            <button className="btn btn-success btn-wide">Create New Character</button>
+            <button className="btn btn-success btn-wide">
+              Create New Character
+            </button>
           </Link>
         </div>
       </div>
