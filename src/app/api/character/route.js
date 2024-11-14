@@ -1,36 +1,24 @@
-import { db } from "@/app/utils/dbconnection";
-import { withAuth } from "@clerk/nextjs/api"; // Clerk middleware for authentication
+import { db } from "../../utils/dbconnection";
+import { auth } from "@clerk/nextjs/server";
 
-export default withAuth(async (req, res) => {
-  const { method } = req;
-
-  switch (method) {
-    case "POST":
-      try {
-        const { userId } = req.auth; // Clerk user ID for the authenticated user
-        if (!userId) {
-          return res.status(401).json({ error: "Unauthorized" });
-        }
-
-        const { player_name, character_info, stats } = req.body;
-
-        await db.query(
-          `
-          INSERT INTO character (player_name, character_info, stats) 
-          VALUES ($1, $2, $3)
-          `,
-          [player_name, character_info, stats]
-        );
-
-        res.status(201).json({ message: "Character created successfully" });
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Error creating character" });
-      }
-      break;
-
-    default:
-      res.setHeader("Allow", ["POST"]);
-      res.status(405).end(`Method ${method} Not Allowed`);
+export async function POST(req) {
+  const { userId } = await auth();
+  if (!userId) {
+    return new Response(JSON.stringify({ message: "Unauthorized" }), { status: 401 });
   }
-});
+
+  try {
+    const { data } = await req.json();
+    await db.collection('yourCollection').insertOne({ userId, data });
+    return new Response(JSON.stringify({ message: "Data inserted successfully" }), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ message: "Internal Server Error", error: error.message }), { status: 500 });
+  }
+}
+
+export async function OPTIONS() {
+  return new Response(null, { status: 204, headers: { Allow: "POST" } });
+}
+
+
+
