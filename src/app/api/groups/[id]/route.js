@@ -1,5 +1,5 @@
 import { db } from "@/app/utils/dbconnection";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 
 export async function GET(req, { params }) {
   const { id } = await params;
@@ -16,12 +16,12 @@ export async function GET(req, { params }) {
 }
 
 export const POST = async (req, { params }) => {
-  const user = await currentUser();
-  const { id } = await params;
+  const { userId } = await auth(); // get the user ID from clerk;
+  const { id } = params;
   try {
     const result = await db.query("INSERT INTO player_group_junction (group_id, player) VALUES ($1, $2) RETURNING *;", [
       id,
-      user.username,
+      userId,
     ]);
     return new Response(JSON.stringify(result.rows[0]), { status: 201 });
   } catch (error) {
@@ -30,10 +30,10 @@ export const POST = async (req, { params }) => {
 };
 
 export const DELETE = async (req, { params }) => {
-  const user = await currentUser();
-  const { id } = await params;
+  const { userId } = await auth();
+  const { id } = params;
   try {
-    await db.query("DELETE FROM player_group_junction WHERE group_id = $1 AND player = $2;", [id, user.username]);
+    await db.query("DELETE FROM player_group_junction WHERE group_id = $1 AND player = $2;", [id, userId]);
     return new Response(null, { status: 204 });
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
