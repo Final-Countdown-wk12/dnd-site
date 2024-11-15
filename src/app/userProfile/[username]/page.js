@@ -38,8 +38,8 @@ export default async function ProfilePage({ searchParams }) {
                 alt="Profile"
                 className="w-24 h-24 rounded-full border border-yellow-500"
               />
-              <div>
-                <h2 className="text-2xl font-bold text-yellow-900">{user.username}</h2>
+              <div >
+                <h2 className="text-2xl font-bold text-yellow-900 break-words">{user.username}</h2>
               </div>
             </div>
           </div>

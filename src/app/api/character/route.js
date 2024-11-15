@@ -1,5 +1,5 @@
 import { db } from "@/app/utils/dbconnection";
-import { withAuth } from "@clerk/nextjs/api"; // Clerk middleware for authentication
+import { withAuth } from "@clerk/nextjs/server"; // Clerk middleware for authentication
 
 export default withAuth(async (req, res) => {
   const { method } = req;

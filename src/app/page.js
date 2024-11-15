@@ -29,6 +29,12 @@ export default function Home() {
             </p>
             
             <div className="grid grid-cols-1 gap-8">
+              <Link href="/welcome">
+                <div className="p-6 rounded-lg shadow-lg bg-[#5A352A] hover:bg-[#7A4A3B] text-[#F4ECE4] transition cursor-pointer">
+                  <h3 className="font-bold text-xl text-[#FFD700] mb-2">New to the Site click here</h3>
+                  <p className="text-sm">Explore and manage ongoing campaigns</p>
+                </div>
+              </Link>
               <Link href="/character/new">
                 <div className="p-6 rounded-lg shadow-lg bg-[#5A352A] hover:bg-[#7A4A3B] text-[#F4ECE4] transition cursor-pointer">
                   <h3 className="font-bold text-xl text-[#FFD700] mb-2">Create Character</h3>
