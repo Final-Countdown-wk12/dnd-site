@@ -16,19 +16,13 @@ export default async function createProfilePage() {
       profile_picture_url: formValues.get("profile_picture_url"),
       clerk_id: userId,
     };
-    console.log(formData);
+    formData;
 
     try {
       await db.query(
         `INSERT INTO users (clerk_id, name, username, user_bio, user_email, profile_picture_url,)
           VALUES ($1, $2, $3, $4, $5 $6)`,
-        [
-          formData.name,
-          formData.username,
-          formData.bio,
-          formData.profile_picture_url,
-          formData.clerk_id,
-        ]
+        [formData.name, formData.username, formData.bio, formData.profile_picture_url, formData.clerk_id]
       );
 
       revalidatePath(`/user/${userId}`);
@@ -41,9 +35,7 @@ export default async function createProfilePage() {
     <div>
       <div className="formContainer">
         <div>
-          <h1 className="text-center text-xl font-bold">
-            Create your profile for others to see
-          </h1>
+          <h1 className="text-center text-xl font-bold">Create your profile for others to see</h1>
 
           <form action={createProfile} className="space-y-4">
             <div className="form-spacing">

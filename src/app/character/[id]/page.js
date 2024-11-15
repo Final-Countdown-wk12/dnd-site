@@ -85,7 +85,6 @@ export default async function CharacterSheet({ params, searchParams }) {
     [id]
   );
   const parsedSkills = skills.rows[0];
-  console.log(parsedSkills);
   const inventory = await db.query(`SELECT inventory FROM character WHERE id = $1`, [id]);
   const parsedInventory = inventory.rows[0].inventory;
 
@@ -102,16 +101,18 @@ export default async function CharacterSheet({ params, searchParams }) {
   );
   const parsedFeatures = featuresQuery.rows[0];
 
-  const spellSlotsQuery = await db.query(`SELECT (spell_slots).max_spell_level, (spell_slots).max_slots, (spell_slots).used_slots, (spell_slots).can_use_magic FROM character WHERE id = $1`, [id]);
-  const parsedSpellSlots = spellSlotsQuery.rows[ 0 ];
-  console.log(parsedSpellSlots);
+  const spellSlotsQuery = await db.query(
+    `SELECT (spell_slots).max_spell_level, (spell_slots).max_slots, (spell_slots).used_slots, (spell_slots).can_use_magic FROM character WHERE id = $1`,
+    [id]
+  );
+  const parsedSpellSlots = spellSlotsQuery.rows[0];
 
   const spellsQuery = await db.query(`SELECT spells FROM character WHERE id = $1`, [id]);
   const parsedSpells = spellsQuery.rows[0].spells;
 
   // Check if we are in edit mode
   const isEditing = (await searchParams)?.edit === "true";
- 
+
   return (
     <div className="p-8 bg-grey-900 text-white min-h-screen">
       <div className="max-w-5xl mx-auto bg-white text-black rounded-lg shadow-md p-6">
@@ -177,7 +178,7 @@ export default async function CharacterSheet({ params, searchParams }) {
                     </p>
                   </div>
                 ))}
-                
+
                 <div className="card bg-gray-200 p-4 rounded-lg">
                   <p>
                     <strong>Max HP:</strong> {parsedHp.max_hp} | <strong>Current HP:</strong> {parsedHp.current_hp} |{" "}
@@ -311,12 +312,19 @@ export default async function CharacterSheet({ params, searchParams }) {
 
             <section className="mt-6">
               <h2 className="text-2xl font-semibold">Spell Slots</h2>
-                <div className="card bg-gray-200 p-4 rounded-lg">
-                <p><strong>Can Use Magic:</strong> { parsedSpellSlots.can_use_magic==true ? "Yes" : "No" }</p>
-                  <p><strong>Max Spell Level:</strong> { parsedSpellSlots.max_spell_level }</p>
-                  <p><strong>Max Slots:</strong> { parsedSpellSlots.max_slots }</p>
-                  <p><strong>Used Slots:</strong> { parsedSpellSlots.used_slots }</p>
-                  
+              <div className="card bg-gray-200 p-4 rounded-lg">
+                <p>
+                  <strong>Can Use Magic:</strong> {parsedSpellSlots.can_use_magic == true ? "Yes" : "No"}
+                </p>
+                <p>
+                  <strong>Max Spell Level:</strong> {parsedSpellSlots.max_spell_level}
+                </p>
+                <p>
+                  <strong>Max Slots:</strong> {parsedSpellSlots.max_slots}
+                </p>
+                <p>
+                  <strong>Used Slots:</strong> {parsedSpellSlots.used_slots}
+                </p>
               </div>
             </section>
 

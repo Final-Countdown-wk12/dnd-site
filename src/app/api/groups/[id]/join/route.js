@@ -4,9 +4,8 @@ import { getAuth } from "@clerk/nextjs/server";
 export async function POST(req, { params }) {
   const { userId } = getAuth(req);
   const usernameQuery = await db.query(`SELECT username FROM users WHERE clerk_id = $1`, [userId]);
-  console.log(usernameQuery.rows);
   const username = usernameQuery.rows[0].username;
-  console.log(username);
+
   const { id } = await params;
   try {
     const result = await db.query(
