@@ -53,17 +53,63 @@ Improvement:
 
 ## Wireframe
 
+![wireframe 1](<public/Screenshot 2024-11-15 145443.png>)
+![wireframe 2](<public/Screenshot 2024-11-15 145518.png>)
+
 ## How to use
 
+Link to site https://the-nexus.vercel.app/
+
+Navigating the Site
+
+1. Homepage:
+   • Start your journey by landing on the homepage, where
+   you’ll see the latest updates and quick links to key sections of the
+   app.
+2. Character Management:
+   • Access this section to create new characters or manage
+   existing ones.
+   • Each character profile includes stats, abilities, and other
+   relevant D&D details.
+   • You can edit or delete characters as needed.
+3. Compendium:
+   • Browse through a comprehensive library of spells,
+   monsters, and equipment.
+   • Use the search functionality to quickly find specific entries.
+4. User Profile:
+   • Sign in or sign up using Clerk’s secure authentication
+   system.
+   • View your personal profile, including your characters and
+   saved resources.
+5. Responsive Design:
+   • The app is optimized for both desktop and mobile users,
+   ensuring a seamless experience across devices.
+   Key Functionalities
+   • Creating a Character:
+   • Navigate to the character section and click on “Create New
+   Character.”
+   • Fill in the necessary details and save your character.
+   • Viewing the Compendium:
+   • Go to the compendium section to access game resources.
+   • Filter resources by type (e.g., spells, monsters, items).
+   • Editing/Deleting:
+   • Manage your characters and remove outdated profiles or
+   incorrect entries directly from the character management page
+
 ## Lighthouse Report
+
+![lighthouse report](public/lighthouse.png)
 
 ## Reflections
 
 Please mention the requirements you met and which goals you achieved for this assignment.
+TH: We have achieved our MVP and most features are working as intended, however there are a few flaws.
 
 🎯 Were there any requirements or goals that you were not quite able to achieve?
+TH: Due to the large scope and complexity of our MVP, even after we cut it down a couple of times, we were working on it right up to the coding deadline and had no chances to work on any of the stretch goal or fix the bugs present in the MVP.
 
 🎯 If so, could you please tell us what was it that you found difficult about these tasks?
+TH: Because of new techniques used in the database and how disorginised the code was when creating types and domains it was difficult to explain how the database works to my teammates.
 
 What went really well and what could have gone better?
 Detailing useful external sources that helped you complete the assignment (e.g Youtube tutorials).
