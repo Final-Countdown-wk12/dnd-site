@@ -104,15 +104,20 @@ Navigating the Site
 
 Please mention the requirements you met and which goals you achieved for this assignment.
 TH: We have achieved our MVP and most features are working as intended, however there are a few flaws.
-
+NMC : We achieved our MVP once we reduced the scope. There are some issues liek redirects etc, which will be something we investigate as time develops 
 🎯 Were there any requirements or goals that you were not quite able to achieve?
 TH: Due to the large scope and complexity of our MVP, even after we cut it down a couple of times, we were working on it right up to the coding deadline and had no chances to work on any of the stretch goal or fix the bugs present in the MVP.
+NMC: JSUt our stretch gals and the minor bugs. 
 
 🎯 If so, could you please tell us what was it that you found difficult about these tasks?
 TH: Because of new techniques used in the database and how disorginised the code was when creating types and domains it was difficult to explain how the database works to my teammates.
+NMC: I found the keeping contrtol of my on gradiose need to succeed complicated so muc hfor everyone.
 
 What went really well and what could have gone better?
+NMC: the compendium and adding to it i ws so proud off as well as the logic for the dice roller.
+
 Detailing useful external sources that helped you complete the assignment (e.g Youtube tutorials).
+NMH: GEEKs  for Geeks, W£Schools, CODECADEMY, various youtube and our amazing teachers 
 Describing errors or bugs you encountered while completing your assignment.
 
 References:
